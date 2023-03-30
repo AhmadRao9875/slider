@@ -2,7 +2,7 @@
   <div class="heading"><h1>This is Image slider</h1></div>
   <div class="carousel">
     <div class="carousel-inner">
-      <transition-group name="slide" mode="out-in">
+      <transition-group name="slide-in">
         <div
           class="carousel-item"
           :class="{ active: item === currentItem }"
@@ -10,6 +10,7 @@
           :key="item.id"
         >
           <img :src="item.image" alt="Carousel Item" />
+
           <div class="carousel-caption">
             <h3>{{ item.title }}</h3>
             <p>{{ item.description }}</p>
@@ -141,12 +142,25 @@ export default {
 }
 
 .carousel-item {
-  position: absolute;
+  /* position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   opacity: 0;
+  transition: transform 0.5s ease-in-out; */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: -100%;
+  opacity: 1;
+  transition: all 1.5s;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  transform: translateX(0);
 }
 .carousel-item img {
   width: 100%;
@@ -154,10 +168,24 @@ export default {
   object-fit: cover;
 }
 
-.carousel-item.active {
+/* .carousel-item.active {
   right: 0;
   opacity: 1;
+  transition: 1s; 
   transition: opacity 1s ease-in-out;
+} */
+.active {
+  /* transform: translateX(-100%); */
+  right: 0;
+  opacity: 1;
+  transition: opacity 1.5s ease-in-out;
+}
+.carousel-item.next {
+  transform: translateX(100%);
+}
+
+.carousel-item.prev {
+  transform: translateX(-100%);
 }
 
 .carousel-caption {
@@ -235,33 +263,14 @@ export default {
   left: 0;
   transform: translate(-50%, -50%);
 }
-.carousel-slide-enter-active {
-  transition: all 0.5s ease;
+.slide-in-enter-active,
+.slide-in-leave-active {
+  transition: all 1s ease-in-out;
 }
-
-.carousel-slide-enter {
-  opacity: 0;
-  transform: translateX(100%);
-}
-
-.carousel-slide-leave-active {
-  transition: all 1s ease;
-}
-
-.carousel-slide-leave {
-  opacity: 0;
+.slide-in-enter-from {
   transform: translateX(-100%);
 }
-
-.slide-move {
-  transition: transform 1s ease;
-}
-
-.slide-enter {
+.slide-in-leave-to {
   transform: translateX(100%);
-}
-
-.slide-leave-to {
-  transform: translateX(-100%);
 }
 </style>
