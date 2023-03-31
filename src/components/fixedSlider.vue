@@ -160,7 +160,7 @@ export default {
 
 .carousel-info {
   width: 100%;
-  width: 50rem;
+  width: 46.8rem;
   text-align: center;
   margin-top: 18.75rem;
 }
