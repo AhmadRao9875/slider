@@ -162,6 +162,7 @@ export default {
   width: 100%;
   width: 50rem;
   text-align: center;
+  margin-top: 18.75rem;
 }
 
 .title {
@@ -268,9 +269,9 @@ export default {
     width: 80%;
   }
   .carousel-info {
-    margin-top: 7.8rem;
-    padding-right: 3.2rem;
-    padding-left: 3.2rem;
+    margin-top: 4.8rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
   }
   .dot-outer {
     width: 8px;
