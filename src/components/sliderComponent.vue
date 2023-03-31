@@ -51,7 +51,7 @@
         </svg>
       </div>
     </div>
-    <div class="landing-page-hero-pagination-container">
+    <div class="pagination-container">
       <div class="pagination">
         <span
           v-for="(slide, index) in slides"
@@ -152,7 +152,7 @@ export default {
   align-items: center;
   flex-direction: column;
 }
-.landing-page-hero-pagination-container {
+.pagination-container {
   width: 114rem;
   position: absolute;
   left: 50%;
