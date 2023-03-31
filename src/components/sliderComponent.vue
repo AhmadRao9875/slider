@@ -11,9 +11,11 @@
         :class="{ active: index === currentIndex }"
       >
         <img :src="slide.imageSrc" :alt="slide.imageAlt" />
-        <div class="carousel-caption">
-          <h5>{{ slide.title }}</h5>
-          <p>{{ slide.text }}</p>
+        <div class="carousel-info">
+          <div class="carousel-caption">
+            <h5>{{ slide.title }}</h5>
+            <p>{{ slide.text }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -49,14 +51,17 @@
         </svg>
       </div>
     </div>
-    <div class="carousel-dots">
-      <span
-        v-for="(slide, index) in slides"
-        :key="index"
-        class="carousel-dot"
-        :class="{ active: index === currentIndex }"
-        @click="goToSlide(index)"
-      ></span>
+    <div class="landing-page-hero-pagination-container">
+      <div class="pagination">
+        <span
+          v-for="(slide, index) in slides"
+          :key="index"
+          class="dot-outer"
+          @click="goToSlide(index)"
+        >
+          <span :class="{ active: index === currentIndex }" class="dot"></span>
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -128,38 +133,62 @@ export default {
   max-height: 45rem;
 }
 
+.carousel-info {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 50%;
+  height: 100%;
+}
 .carousel-caption {
-  position: absolute;
-  top: 50%;
+  width: 100%;
   left: 50%;
-  padding: 15px;
+  top: 36.2%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  text-align: center;
   color: #fff;
-}
-
-.carousel-dots {
-  position: absolute;
   display: flex;
-  top: 95%;
+  align-items: center;
+  flex-direction: column;
+}
+.landing-page-hero-pagination-container {
+  width: 114rem;
+  position: absolute;
   left: 50%;
+  top: 90%;
+  transform: translate(-50%, -50%);
+}
+.pagination {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 1.6rem;
+}
+.dot-outer {
+  display: flex;
   justify-content: center;
-  /* margin-top: 10px; */
-}
-
-.carousel-dot {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background-color: #bbb;
-  margin: 0 5px;
+  align-items: center;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  background-color: transparent;
+}
+.dot {
+  display: flex;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: transparent;
+}
+.active {
+  background-color: #fff;
+  border-color: #fff;
 }
 
-.carousel-dot.active {
-  background-color: #fff;
-  width: 10px;
-  height: 10px;
-}
 .icon-container {
   width: 90%;
   position: absolute;
@@ -175,12 +204,12 @@ export default {
 
 .icon {
   position: absolute;
-  width: 1.8rem;
-  height: 1.8rem;
+  width: 3rem;
+  height: 3rem;
   top: 50%;
   cursor: pointer;
-  border: 1px solid black;
-  stroke: black100;
+  border: 1px solid rgb(254, 253, 253);
+  stroke: rgb(248, 245, 245);
   border-radius: 50%;
   padding: 1.2rem;
 }
@@ -191,5 +220,45 @@ export default {
 .icon--left {
   left: 0;
   transform: translate(-50%, -50%);
+}
+
+/* MEDIA QUERY */
+
+@media only screen and (max-width: 1200px) {
+  .dot-outer {
+    width: 2rem;
+    height: 2rem;
+  }
+  .icon-container {
+    width: 85%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .icon {
+    width: 1rem;
+    height: 1rem;
+    padding: 0.5rem;
+  }
+  .icon-container {
+    width: 80%;
+  }
+  .carousel-info {
+    top: 10%;
+  }
+  .carousel-caption {
+    /* left: 23%; */
+    top: 20%;
+    padding: 7px;
+    line-height: normal;
+    margin: 0;
+  }
+  .dot-outer {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+  .dot {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
 }
 </style>
