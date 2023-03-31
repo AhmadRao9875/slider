@@ -13,8 +13,8 @@
         <img :src="slide.imageSrc" :alt="slide.imageAlt" />
         <div class="carousel-info">
           <div class="carousel-caption">
-            <h5>{{ slide.title }}</h5>
-            <p>{{ slide.text }}</p>
+            <p class="title">{{ slide.title }}</p>
+            <p class="description">{{ slide.text }}</p>
           </div>
         </div>
       </div>
@@ -152,6 +152,19 @@ export default {
   align-items: center;
   flex-direction: column;
 }
+.title {
+  display: block;
+  font-size: 2.875rem;
+  color: #37474f;
+  font-weight: bold;
+}
+.description {
+  font-size: 0.8rem;
+  color: #fff;
+  font-weight: 600;
+  display: block;
+  line-height: 1.85;
+}
 .pagination-container {
   width: 114rem;
   position: absolute;
@@ -171,16 +184,16 @@ export default {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 1.125rem;
+  height: 1.125rem;
   border-radius: 50%;
   border: 1px solid #fff;
   background-color: transparent;
 }
 .dot {
   display: flex;
-  width: 1rem;
-  height: 1rem;
+  width: .6rem;
+  height: .6rem;
   border-radius: 50%;
   background-color: transparent;
 }
@@ -259,6 +272,18 @@ export default {
   .dot {
     width: 0.5rem;
     height: 0.5rem;
+  }
+  .title {
+    font-size: 2.25rem;
+    color: white;
+    line-height: 1.3;
+    font-weight: bold;
+  }
+  .description {
+    color: white;
+    font-size: 0.75rem;
+    font-weight: normal;
+    line-height: 1.3;
   }
 }
 </style>
