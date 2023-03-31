@@ -1,15 +1,16 @@
 <template>
   <div>
-    <sliderComponent />
+    <fixedSlider />
   </div>
 </template>
 
 <script>
-import sliderComponent from "../src/components/sliderComponent.vue";
-
+// import sliderComponent from "../src/components/sliderComponent.vue";
+import fixedSlider from "./components/fixedSlider.vue";
 export default {
   components: {
-    sliderComponent,
+    // sliderComponent,
+    fixedSlider,
   },
 };
 </script>

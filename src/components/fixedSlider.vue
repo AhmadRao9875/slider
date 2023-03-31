@@ -2,17 +2,20 @@
   <div class="carousel">
     <div
       class="carousel-inner"
-      :style="{ transform: 'translateX(' + -currentIndex * 100 + '%)' }"
+      :style="{
+        backgroundImage: `url(${imagePath})`,
+        backgroundSize: 'cover',
+        objectFit: 'cover',
+      }"
     >
       <div
         v-for="(slide, index) in slides"
         :key="index"
         class="carousel-item"
-        :class="{ active: index === currentIndex }"
+        :class="index === currentIndex ? 'acitve-slide' : ''"
       >
-        <img :src="slide.imageSrc" :alt="slide.imageAlt" />
-        <div class="carousel-info">
-          <div class="carousel-caption">
+        <div class="caption-box">
+          <div class="carousel-info">
             <p class="title">{{ slide.title }}</p>
             <p class="description">{{ slide.text }}</p>
           </div>
@@ -68,8 +71,10 @@
 
 <script>
 export default {
+  name: "fixedSlider",
   data() {
     return {
+      imagePath: require("@/assets/image1.jpg"),
       slides: [
         {
           imageSrc: "https://picsum.photos/id/1015/1200/800",
@@ -112,46 +117,53 @@ export default {
 .carousel {
   position: relative;
   width: 100%;
-  overflow: hidden;
+  max-height: 74.46rem;
 }
 
 .carousel-inner {
   width: 100%;
+  height: 90vh;
+  position: relative;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.carousel-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.carousel-item {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  display: none;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  transform: scale(0.8);
+}
+.acitve-slide {
+  transform: scale(1);
+  display: flex;
+  right: 0;
+  opacity: 1;
+  animation: fadeInLeftToRight 1s ease-in-out;
+}
+.caption-box {
+  width: 100%;
   height: 100%;
   display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.carousel-item {
-  flex-shrink: 0;
-  position: relative;
-  width: 100%;
-}
-
-.carousel-item img {
-  width: 100%;
-  max-height: 45rem;
+  justify-content: center;
 }
 
 .carousel-info {
-  position: absolute;
-  top: 0;
-  left: 25%;
-  width: 50%;
-  height: 100%;
-}
-.carousel-caption {
   width: 100%;
-  left: 50%;
-  top: 36.2%;
-  transform: translate(-50%, -50%);
-  position: absolute;
+  width: 50rem;
   text-align: center;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
 }
+
 .title {
   display: block;
   font-size: 2.875rem;
@@ -166,7 +178,7 @@ export default {
   line-height: 1.85;
 }
 .pagination-container {
-  width: 114rem;
+  width: 100%;
   position: absolute;
   left: 50%;
   top: 90%;
@@ -202,7 +214,6 @@ export default {
   background-color: #fff;
   border-color: #fff;
 }
-
 .icon-container {
   width: 90%;
   position: absolute;
@@ -240,8 +251,8 @@ export default {
 
 @media only screen and (max-width: 1200px) {
   .dot-outer {
-    width: 2rem;
-    height: 2rem;
+    width: 0.625rem;
+    height: 0.625rem;
   }
   .icon-container {
     width: 85%;
@@ -257,23 +268,15 @@ export default {
     width: 80%;
   }
   .carousel-info {
-    top: 10%;
-  }
-  .carousel-caption {
-    /* left: 23%; */
-    top: 20%;
-    padding: 7px;
-    line-height: normal;
-    margin: 0;
+    margin-top: 7.8rem;
+    padding-right: 3.2rem;
+    padding-left: 3.2rem;
   }
   .dot-outer {
-    width: 0.5rem;
-    height: 0.5rem;
+    width: 8px;
+    height: 8px;
   }
-  .dot {
-    width: 0.5rem;
-    height: 0.5rem;
-  }
+
   .title {
     font-size: 2.25rem;
     color: white;
@@ -285,6 +288,9 @@ export default {
     font-size: 0.75rem;
     font-weight: normal;
     line-height: 1.3;
+  }
+  .icon-container {
+    display: none;
   }
 }
 </style>
