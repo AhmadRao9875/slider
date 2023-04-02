@@ -117,12 +117,12 @@ export default {
 .carousel {
   position: relative;
   width: 100%;
-  min-height: 46.53rem;
+  height: 100%;
 }
 
 .carousel-inner {
   width: 100%;
-  height: 117vh;
+  height: 90vh;
   position: relative;
   overflow: hidden;
   background-position: center;
@@ -265,7 +265,6 @@ export default {
     width: 80%;
   }
   .slide-info {
-    margin-top: 4.8rem;
     padding-right: 2rem;
     padding-left: 2rem;
   }
