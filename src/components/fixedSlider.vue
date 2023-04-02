@@ -11,11 +11,11 @@
       <div
         v-for="(slide, index) in slides"
         :key="index"
-        class="carousel-item"
+        class="slides"
         :class="index === currentIndex ? 'acitve-slide' : ''"
       >
-        <div class="caption-box">
-          <div class="carousel-info">
+        <div class="slide-box">
+          <div class="slide-info">
             <p class="title">{{ slide.title }}</p>
             <p class="description">{{ slide.text }}</p>
           </div>
@@ -117,7 +117,7 @@ export default {
 .carousel {
   position: relative;
   width: 100%;
-  max-height: 74.46rem;
+  min-height: 46.53rem;
 }
 
 .carousel-inner {
@@ -134,35 +134,31 @@ export default {
   height: 100%;
   object-fit: cover;
 }
-.carousel-item {
+.slides {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  color: white;
   width: 100%;
-  height: 100%;
-  opacity: 0;
-  display: none;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  transform: scale(0.8);
+  height: 0;
+  transform: translateX(100%);
+  transition: transform 1s ease-in-out;
 }
 .acitve-slide {
-  transform: scale(1);
-  display: flex;
-  right: 0;
-  opacity: 1;
-  animation: fadeInLeftToRight 1s ease-in-out;
+  transform: translateX(0);
 }
-.caption-box {
+.slide-box {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 18.75rem;
 }
 
-.carousel-info {
+.slide-info {
   width: 100%;
-  width: 46.8rem;
+  max-width: 46.1rem;
   text-align: center;
-  margin-top: 18.75rem;
 }
 
 .title {
@@ -268,7 +264,7 @@ export default {
   .icon-container {
     width: 80%;
   }
-  .carousel-info {
+  .slide-info {
     margin-top: 4.8rem;
     padding-right: 2rem;
     padding-left: 2rem;
