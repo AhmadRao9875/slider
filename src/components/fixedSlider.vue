@@ -122,7 +122,7 @@ export default {
 
 .carousel-inner {
   width: 100%;
-  height: 90vh;
+  height: 117vh;
   position: relative;
   overflow: hidden;
   background-position: center;
@@ -135,7 +135,7 @@ export default {
   object-fit: cover;
 }
 .slides {
-  flex: 1;
+  /* flex: 1; */
   display: flex;
   flex-direction: row;
   color: white;
