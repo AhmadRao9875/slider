@@ -74,7 +74,7 @@ export default {
   name: "fixedSlider",
   data() {
     return {
-      imagePath: require("@/assets/image1.jpg"),
+      imagePath: require("@/assets/image2.jpg"),
       slides: [
         {
           imageSrc: "https://picsum.photos/id/1015/1200/800",
