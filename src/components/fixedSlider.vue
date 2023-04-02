@@ -1,13 +1,6 @@
 <template>
   <div class="carousel">
-    <div
-      class="carousel-inner"
-      :style="{
-        backgroundImage: `url(${imagePath})`,
-        backgroundSize: 'cover',
-        objectFit: 'cover',
-      }"
-    >
+    <div class="carousel-inner">
       <div
         v-for="(slide, index) in slides"
         :key="index"
@@ -15,9 +8,18 @@
         :class="index === currentIndex ? 'acitve-slide' : ''"
       >
         <div class="slide-box">
-          <div class="slide-info">
-            <p class="title">{{ slide.title }}</p>
-            <p class="description">{{ slide.text }}</p>
+          <div
+            class="slide-info"
+            :style="{
+              backgroundImage: `url(${slide.imageSrc})`,
+              backgroundSize: 'cover',
+              objectFit: 'cover',
+            }"
+          >
+            <div class="information">
+              <p class="title">{{ slide.title }}</p>
+              <p class="description">{{ slide.text }}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -114,6 +116,10 @@ export default {
 </script>
 
 <style scoped>
+p{
+  margin: 0;
+}
+
 .carousel {
   position: relative;
   width: 100%;
@@ -122,7 +128,7 @@ export default {
 
 .carousel-inner {
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   position: relative;
   overflow: hidden;
   background-position: center;
@@ -150,15 +156,19 @@ export default {
 .slide-box {
   width: 100%;
   height: 100%;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
-  margin-top: 18.75rem;
+  /* margin-top: 18.75rem; */
 }
 
+.information{
+  padding-top: 18rem;
+}
 .slide-info {
   width: 100%;
-  max-width: 46.1rem;
+  /* max-width: 46.1rem; */
   text-align: center;
+  height: 100vh;
 }
 
 .title {
@@ -196,7 +206,7 @@ export default {
   width: 1.125rem;
   height: 1.125rem;
   border-radius: 50%;
-  border: 1px solid #fff;
+  border: 1px solid #080808;
   background-color: transparent;
 }
 .dot {
@@ -208,7 +218,7 @@ export default {
 }
 
 .active {
-  background-color: #fff;
+  background-color: #020202;
   border-color: #fff;
 }
 .icon-container {
@@ -230,8 +240,8 @@ export default {
   height: 3rem;
   top: 50%;
   cursor: pointer;
-  border: 1px solid rgb(254, 253, 253);
-  stroke: rgb(248, 245, 245);
+  border: 1px solid rgb(2, 2, 2);
+  stroke: rgb(7, 7, 7);
   border-radius: 50%;
   padding: 1.2rem;
 }
