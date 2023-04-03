@@ -142,7 +142,9 @@ p {
 .carousel {
   position: relative;
   width: 100%;
+  display: flex;
   height: 100%;
+  overflow: hidden;
 }
 
 .carousel-inner {
@@ -152,11 +154,11 @@ p {
   /* transform: translateX(-30%); */
   transition: all 0.5s ease-out;
 }
-.carousel-inner img {
+/* .carousel-inner img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
+} */
 .slides {
   flex: 0 0 calc(100% / 1);
   position: relative;
@@ -184,7 +186,9 @@ p {
 }
 .slide-info {
   width: 100%;
-  /* max-width: 46.1rem; */
+  background-size: cover;
+  background-position: center;
+  overflow-x:hidden ;
   text-align: center;
   height: 100vh;
 }
