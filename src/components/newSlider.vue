@@ -1,17 +1,16 @@
 <template>
   <div class="carousel">
-    <div class="carousel-inner" ref="slideArea">
+    <div class="carousel-inner">
       <div
         v-for="(slide, index) in slides"
         :key="index"
         class="slides"
-        :class="index === currentIndex ? 'acitve-slide' : ''"
+        :class="index === currentIndex ? 'acitve-slide' : 'active-next'"
       >
         <div class="slide-box">
           <div
             class="slide-info"
             :style="{
-              width: '100%',
               backgroundImage: `url(${slide.imageSrc})`,
               backgroundSize: 'cover',
               objectFit: 'cover',
@@ -99,36 +98,34 @@ export default {
         },
       ],
       currentIndex: 0,
-      slideWidth: 0,
+      transformAmount: "0%",
     };
-  },
-  mounted() {
-    this.slideWidth = 300 / this.slides.length;
-    this.$refs.slideArea.style.transform = "translateX(-0%)";
   },
   methods: {
     nextSlide() {
-      if (this.currentIndex < this.slides.length - 1) {
-        this.currentIndex++;
-      } else {
-        this.currentIndex = 0;
-      }
-      const nextSlideIndex = this.currentIndex * this.slideWidth;
-      this.$refs.slideArea.style.transform = `translateX(-${nextSlideIndex}%)`;
+      this.currentIndex = (this.currentIndex + 1) % this.slides.length;
     },
     prevSlide() {
-      if (this.currentIndex > 0) {
-        console.log(this.currentIndex, "this is prev ");
-        this.currentIndex--;
-        // const nextSlideIndex = this.currentIndex * this.slideWidth;
-        this.$refs.slideArea.style.transform = `translateX(-${this.currentIndex}00%)`;
-      }
-      // this.currentIndex =
-      //   (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+      this.currentIndex =
+        (this.currentIndex - 1 + this.slides.length) % this.slides.length;
     },
     goToSlide(index) {
       this.currentIndex = index;
-      this.$refs.slideArea.style.transform = `translateX(-${index}00%)`;
+    },
+    showSlide(index) {
+      if (index < 0) {
+        index = this.slides.length - 1;
+      } else if (index >= this.slides.length) {
+        index = 0;
+      }
+      this.slideIndex = index;
+      this.transformAmount = "-" + index * 100 + "%";
+    },
+    showPrevSlide() {
+      this.showSlide(this.slideIndex - 1);
+    },
+    showNextSlide() {
+      this.showSlide(this.slideIndex + 1);
     },
   },
 };
@@ -146,11 +143,13 @@ p {
 }
 
 .carousel-inner {
-  display: flex;
-  height: 100%;
   width: 100%;
-  /* transform: translateX(-30%); */
-  transition: all 0.5s ease-out;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .carousel-inner img {
   width: 100%;
@@ -158,22 +157,26 @@ p {
   object-fit: cover;
 }
 .slides {
-  flex: 0 0 calc(100% / 1);
-  position: relative;
+  /* flex: 1; */
+  display: flex;
+  flex-direction: row;
+  color: rgb(59, 41, 41);
   width: 100%;
-  height: auto;
-  cursor: pointer;
+  height: 0;
+  z-index: 1;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
 }
 .acitve-slide {
-  /* opacity: 1; */
+  transform: translateX(0);
+  z-index: 100;
 }
-/* .active-next {
-  transform: translateX(100%);
-} */
+.active-next {
+    transform: translateX(100%);
+  }
 .slide-box {
   width: 100%;
   height: 100%;
-
   /* display: flex; */
   justify-content: center;
   /* margin-top: 18.75rem; */
