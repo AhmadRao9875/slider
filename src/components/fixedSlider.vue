@@ -82,20 +82,20 @@ export default {
         {
           imageSrc: "https://picsum.photos/id/1015/1200/800",
           imageAlt: "Image 1",
-          title: "Slide 1",
-          text: "This is the text for slide 1",
+          title: "Nie wieder Decken streichen",
+          text: "✓ 10 Jahre Garantie* ✓ geniale Preise ✓ schnelle Preisauskunft ✓ direkt vom Hersteller ✓ bis zu 30% sparen ✓ Top Qualität ✓ keine versteckte Kosten ✓ kurze Lieferzeiten",
         },
         {
           imageSrc: "https://picsum.photos/id/1018/1200/800",
           imageAlt: "Image 2",
-          title: "Slide 2",
-          text: "This is the text for slide 2",
+          title: "Nie wieder Decken streichen",
+          text: "✓ 10 Jahre Garantie* ✓ geniale Preise ✓ schnelle Preisauskunft ✓ direkt vom Hersteller ✓ bis zu 30% sparen ✓ Top Qualität ✓ keine versteckte Kosten ✓ kurze Lieferzeiten",
         },
         {
           imageSrc: "https://picsum.photos/id/1019/1200/800",
           imageAlt: "Image 3",
-          title: "Slide 3",
-          text: "This is the text for slide 3",
+          title: "Nie wieder Decken streichen",
+          text: "✓ 10 Jahre Garantie* ✓ geniale Preise ✓ schnelle Preisauskunft ✓ direkt vom Hersteller ✓ bis zu 30% sparen ✓ Top Qualität ✓ keine versteckte Kosten ✓ kurze Lieferzeiten",
         },
       ],
       currentIndex: 0,
@@ -181,30 +181,34 @@ p {
   /* margin-top: 18.75rem; */
 }
 
-.information {
-  padding-top: 18rem;
-}
 .slide-info {
   width: 100%;
   background-size: cover;
   background-position: center;
-  overflow-x:hidden ;
+  overflow-x: hidden;
   text-align: center;
   height: 100vh;
 }
 
+.information {
+  padding-top: 7.5rem;
+}
 .title {
   display: block;
+  text-align: center;
   font-size: 2.875rem;
   color: #37474f;
   font-weight: bold;
+  line-height: 1.22;
 }
 .description {
-  font-size: 0.8rem;
-  color: #fff;
-  font-weight: 600;
   display: block;
+  font-size: 0.8125rem;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
   line-height: 1.85;
+  padding: 0 27.8rem 0 27.8rem;
 }
 .pagination-container {
   width: 100%;
@@ -225,22 +229,26 @@ p {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  width: 1.125rem;
-  height: 1.125rem;
+  /* width: 1.125rem;
+  height: 1.125rem; */
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  border: 1px solid #080808;
+  border: 1px solid #fff;
   background-color: transparent;
 }
 .dot {
   display: flex;
-  width: 0.6rem;
-  height: 0.6rem;
+  /* width: 0.625rem;
+  height: 0.625rem; */
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background-color: transparent;
 }
 
 .active {
-  background-color: #020202;
+  background-color: #fff;
   border-color: #fff;
 }
 .icon-container {
@@ -262,10 +270,10 @@ p {
   height: 3rem;
   top: 50%;
   cursor: pointer;
-  border: 1px solid rgb(2, 2, 2);
-  stroke: rgb(7, 7, 7);
+  border: 1px solid rgb(253, 253, 253);
+  stroke: rgb(253, 253, 253);
   border-radius: 50%;
-  padding: 1.2rem;
+  padding: 0.7rem;
 }
 .icon--right {
   right: 0;
@@ -286,6 +294,9 @@ p {
   .icon-container {
     width: 85%;
   }
+  .description{
+    padding: 0 10.5rem 0 10.5rem;
+  }
 }
 @media only screen and (max-width: 600px) {
   .icon {
@@ -296,9 +307,12 @@ p {
   .icon-container {
     width: 80%;
   }
+  .information {
+    padding: 4.875rem 1rem 0 1rem;
+  }
   .slide-info {
     padding-right: 2rem;
-    padding-left: 2rem;
+    /* padding-left: 2rem; */
   }
   .dot-outer {
     width: 8px;
@@ -310,12 +324,14 @@ p {
     color: white;
     line-height: 1.3;
     font-weight: bold;
+    font-family: sans-serif ;
   }
   .description {
     color: white;
     font-size: 0.75rem;
     font-weight: normal;
     line-height: 1.3;
+    padding: 0;
   }
   .icon-container {
     display: none;
