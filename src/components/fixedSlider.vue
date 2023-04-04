@@ -266,8 +266,8 @@ p {
 
 .icon {
   position: absolute;
-  width: 3rem;
-  height: 3rem;
+  width: 1rem;
+  height: 1rem;
   top: 50%;
   cursor: pointer;
   border: 1px solid rgb(253, 253, 253);
